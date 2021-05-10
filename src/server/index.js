@@ -4,13 +4,12 @@ dotenv.config();
 
 const mockAPIResponse = require('./mockAPI.js')
 
-const PORT = 8081
+const PORT = 8080
 
 // TODO add Configuration to be able to use env variables
-var textapi = new meaningCloud({
-   application_key: process.env.API_KEY
-});
-'
+
+const formdata = new FormData();
+formdata.append("key", process.env.API_KEY);
 
 // TODO: Create an instance for the server
 // TODO: Configure cors to avoid cors-origin issue

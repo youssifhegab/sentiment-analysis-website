@@ -1,6 +1,3 @@
-
-// TODO include your scss file here
-
 // TODO: get the button for submit
 // TODO: add event listener to it when the click to call handleSubmit function
 /**
@@ -12,15 +9,22 @@
  *      no
  *          show user message it's not valid URL
  */
-import { checkForName } from './js/nameChecker'
+import { checkForUrl } from './js/checkURL'
 import { handleSubmit } from './js/formHandler'
 
 import './styles/base.scss'
 import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
-import './styles/resets.scss'
+//import './styles/resets.scss'
 
-alert("hiiiiii")
 
-export {checkForName, handleSubmit}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+    const buttonSub = document.getElementById('btn-submit')
+    buttonSub.addEventListener('click', ()=>{
+        handleSubmit()
+    })
+})
+
+export {checkForUrl, handleSubmit}

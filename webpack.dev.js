@@ -38,6 +38,5 @@ module.exports = {
             protectWebpackAssets: false,
             cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")]
         })
-        // TODO: configure workbox-webpack-plugin
     ]
 }
