@@ -1,11 +1,12 @@
 function checkForUrl(myURL) {
-            var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // ip (v4) address
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ //port
-            '(\\?[;&amp;a-z\\d%_.~+=-]*)?'+ // query string
-            '(\\#[-a-z\\d_]*)?$','i');
-            return pattern.test(myURL);
-         }
+   var validUrl = require('valid-url');
+  let isUrl = validUrl.isUri(myURL)
+   if (isUrl){
+       alert('Looks like a URL');
+   } else {
+       alert('Not a URL');
+   }
+   return (isUrl == true)
+}
 
 export { checkForUrl }

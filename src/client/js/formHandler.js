@@ -1,19 +1,41 @@
+import { checkForUrl } from "./checkURL"
+
+const post = async(url='', data = {}) =>{
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        mode: 'cors',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    try{
+        return await response.json()
+    } catch (error){
+        console.log(error)
+    }
+}
 function handleSubmit(event) {
-//    event.preventDefault()
+   event.preventDefault()
 
     // check what text was put into the form field
 //    alert('holaaaaa')
     let formText = document.getElementById('URL').value
-    if(checkForUrl(formText) === true){
+    if(checkForUrl(formText) == false){
         alert('helllo')
         console.log("::: Form Submitted :::")
-        fetch('http://localhost:8080/test')
-           .then(res => res.json())
-           .then(function(res) {
-               document.getElementById('results').innerHTML = "heelllo"
-           })
+        post('http://localhost:8080/add-url', {formText}).then(data =>{
+            document.getElementById('text').innerHTML = `Polarity: ${data.text}`
+            document.getElementById('agreement').innerHTML = `Polarity: ${data.agreement}`
+            document.getElementById('subjectivity').innerHTML = `Polarity: ${data.subjectivity}`
+            document.getElementById('confidence').innerHTML = `Polarity: ${data.confidence}`
+            document.getElementById('irony').innerHTML = `Polarity: ${data.irony}`
+            document.getElementById('score_tag').innerHTML = `Polarity: ${data.score_tag}`
+
+        })
     }else{
-        alert('please try with a valid url')
+        alert('please try with a valid url yabn')
     }
 }
 

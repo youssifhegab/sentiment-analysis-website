@@ -22,8 +22,8 @@ import './styles/header.scss'
 
 window.addEventListener('DOMContentLoaded', ()=>{
     const buttonSub = document.getElementById('btn-submit')
-    buttonSub.addEventListener('click', ()=>{
-        handleSubmit()
+    buttonSub.addEventListener('click', (event)=>{
+        handleSubmit(event)
     })
 })
 
