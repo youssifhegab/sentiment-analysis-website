@@ -1,5 +1,7 @@
 import { checkForUrl } from "./checkURL"
 
+const fetch = require('node-fetch')
+
 const post = async(url='', data = {}) =>{
     const response = await fetch(url, {
         method: 'POST',
@@ -22,10 +24,12 @@ function handleSubmit(event) {
     // check what text was put into the form field
 //    alert('holaaaaa')
     let formText = document.getElementById('URL').value
-    if(checkForUrl(formText) == false){
-        alert('helllo')
+    console.log('hello')
+    if(checkForUrl(formText)){
+
+        alert('thats a valid url')
         console.log("::: Form Submitted :::")
-        post('http://localhost:8080/add-url', {formText}).then(data =>{
+        post('http://localhost:8080/', {formText}).then(data =>{
             document.getElementById('text').innerHTML = `Polarity: ${data.text}`
             document.getElementById('agreement').innerHTML = `Polarity: ${data.agreement}`
             document.getElementById('subjectivity').innerHTML = `Polarity: ${data.subjectivity}`
@@ -35,7 +39,7 @@ function handleSubmit(event) {
 
         })
     }else{
-        alert('please try with a valid url yabn')
+        alert('please try with a valid url')
     }
 }
 
