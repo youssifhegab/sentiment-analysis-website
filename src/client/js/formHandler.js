@@ -31,7 +31,7 @@ function handleSubmit(event) {
         alert('thats a valid url')
         console.log("::: Form Submitted :::")
         post('http://localhost:8080/', {formText}).then(data =>{
-            document.getElementById('text').innerHTML = `Polarity: ${data.text}`
+            document.getElementById('model').innerHTML = `Polarity: ${data.model}`
             document.getElementById('agreement').innerHTML = `Polarity: ${data.agreement}`
             document.getElementById('subjectivity').innerHTML = `Polarity: ${data.subjectivity}`
             document.getElementById('confidence').innerHTML = `Polarity: ${data.confidence}`

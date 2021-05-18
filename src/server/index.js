@@ -30,15 +30,23 @@ let server = app.listen(process.env.PORT || 8081, function () {
 })
 
 app.post('/', async function (req, res) {
-    const url = req.body.url
-    let responseObj = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${url}&lang=en`, { method: "POST" })
-
-    let data = await responseObj.json()
-    {console.log(" Web Server data")}
-    {console.log(data)}
-    if (data && data.status.code == 0)
-        res.send(data)
-    else res.status(500).send({ message: "Server Error" })
+    try {    
+        const url = req.body.url;
+        const apiUrl = `https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&url=${url}&lang=en`;
+        const responseObj = await fetch(apiUrl);
+        let data = await responseObj.json()
+        const result = {
+            model: data.model,
+            irony: data.irony,
+            agreement: data.agreement,
+            subjectivity: data.subjectivity,
+            confidence: data.confidence,
+            score_tag: data.score_tag,
+        };
+        res.send(result);
+    }catch{
+        console.log(error.message)
+    }
 })
 
 // export{app}
