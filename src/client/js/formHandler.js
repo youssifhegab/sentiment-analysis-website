@@ -1,4 +1,5 @@
 import { checkForUrl } from "./checkURL"
+require("regenerator-runtime/runtime");
 
 const fetch = require('node-fetch')
 

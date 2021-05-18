@@ -9,7 +9,10 @@ module.exports = {
     output: {
        libraryTarget: 'var',
        library: 'Client',
-       path: path.resolve(__dirname, "dist")
+       path: path.resolve(__dirname, "dist"),
+    },
+    devServer: {
+        port: 9000
     },
     module: {
         rules: [
