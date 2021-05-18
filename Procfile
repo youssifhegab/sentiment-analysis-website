@@ -1,0 +1,1 @@
+web: SET PORT=8080 && nodemon src/server/index.js

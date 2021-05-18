@@ -14,6 +14,9 @@ module.exports = {
          libraryTarget: 'var',
          library: 'Client'
     },
+    devServer: {
+        port: 9000
+    },
     module: {
         rules: [
             {
@@ -25,10 +28,6 @@ module.exports = {
                 test: /\.scss$/,
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
             },
-            // {
-            //     test: /\.css$/,
-            //     use: ["style-loader", "css-loader"],
-            // },
         ]
     },
     plugins: [
