@@ -2,6 +2,10 @@
   "name": "evaluate-news-nlp",
   "version": "0.0.1",
   "main": "index.js",
+  "engines": {
+    "node": "16.0.0",
+    "npm": "7.13.0"
+  },
   "scripts": {
     "test": "jest",
     "start": "SET PORT=8080 && nodemon src/server/index.js",
