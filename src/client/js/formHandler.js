@@ -20,10 +20,7 @@ const post = async(url='', data = {}) =>{
     }
 }
 function handleSubmit(event) {
-   event.preventDefault()
-
-    // check what text was put into the form field
-//    alert('holaaaaa')
+    event.preventDefault()
     let formText = document.getElementById('URL').value
     if(checkForUrl(formText) == true){
         console.log("::: Form Submitted :::")
@@ -41,6 +38,12 @@ function handleSubmit(event) {
         }
     }else{
         alert('please try with a valid url')
+        document.getElementById('model').innerHTML = ''
+        document.getElementById('agreement').innerHTML = ''
+        document.getElementById('subjectivity').innerHTML = ''
+        document.getElementById('confidence').innerHTML = ''
+        document.getElementById('irony').innerHTML = ''
+        document.getElementById('score_tag').innerHTML = ''
     }
 }
 
