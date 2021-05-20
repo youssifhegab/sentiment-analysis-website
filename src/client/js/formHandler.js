@@ -25,20 +25,20 @@ function handleSubmit(event) {
     // check what text was put into the form field
 //    alert('holaaaaa')
     let formText = document.getElementById('URL').value
-    console.log('hello')
-    if(checkForUrl(formText)){
-
-        alert('thats a valid url')
+    if(checkForUrl(formText) == true){
         console.log("::: Form Submitted :::")
-        post('http://localhost:8080/', {formText}).then(data =>{
-            document.getElementById('model').innerHTML = `Polarity: ${data.model}`
-            document.getElementById('agreement').innerHTML = `Polarity: ${data.agreement}`
-            document.getElementById('subjectivity').innerHTML = `Polarity: ${data.subjectivity}`
-            document.getElementById('confidence').innerHTML = `Polarity: ${data.confidence}`
-            document.getElementById('irony').innerHTML = `Polarity: ${data.irony}`
-            document.getElementById('score_tag').innerHTML = `Polarity: ${data.score_tag}`
-
-        })
+        try{
+            post('http://localhost:8080/', {url: formText}).then(data =>{
+                document.getElementById('model').innerHTML = `model:${data.model}`
+                document.getElementById('agreement').innerHTML = `agreement: ${data.agreement}`
+                document.getElementById('subjectivity').innerHTML = `subjectivity: ${data.subjectivity}`
+                document.getElementById('confidence').innerHTML = `confidence: ${data.confidence}`
+                document.getElementById('irony').innerHTML = `irony: ${data.irony}`
+                document.getElementById('score_tag').innerHTML = `score_tag: ${data.score_tag}`
+            })
+        } catch (error){
+            console.log("there was an error while fetching the data")
+        }
     }else{
         alert('please try with a valid url')
     }
